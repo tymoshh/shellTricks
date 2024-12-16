@@ -1,4 +1,4 @@
-# showren.bat
+# showren
 
 saved a tv show? 
 got something like this
