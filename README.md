@@ -1,3 +1,3 @@
-# batchTricks
+# shellTricks
 
-repo full of unique batch tricks
+repo full of unique batch and bash tricks
