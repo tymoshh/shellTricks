@@ -12,17 +12,6 @@ curl https://raw.githubusercontent.com/tymoshh/clipCompressor/refs/heads/main/as
 echo(
 pause
 
-:checkFfmpeg
-cls
-echo(
-ffmpeg -version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo ffmpeg not found
-	goto :installFfmpeg
-)
-
-
-
 set logOptions=-loglevel quiet
 
 set sizeOptions=-fs 10M
@@ -52,7 +41,7 @@ if "!userHardware!"=="1" (
 	if %errorlevel% equ 0 (
 		goto :normalEnd
 	) else (
-		goto :installFfmpeg
+		goto :errorOcurred
 	)
 )
 
@@ -82,7 +71,7 @@ if "!userHardware!"=="3" (
 )
 
 if "!userHardware!"=="4" (
-	echo NOT DONE YET
+	echo NOT SUPPORTED YET
 	echo(
 )
 
@@ -113,40 +102,3 @@ echo(
 pause
 exit
 
-:chocolateyStuff
-choco -v >nul 2>&1
-if %errorlevel% neq 0 (
-	echo(
-	echo chocolatey not installed
-	set /p doInstallChoco="install chocolatey? (y/n) : "
-	if !doInstallChoco!=="y" (
-		@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-		echo restart needed to refresh enviromental variables
-		echo(
-		pause
-		start "" /b "%comspec%" /c "%~f0"
-		exit /b
-	)
-	if !doInstallChoco!=="n" (
-		goto :errorOcurred
-	)
-	goto :chocolateyStuff
-) else (
-	goto :chocoInstalled
-)
-
-:installFfmpeg
-echo(
-set /p doInstallFfmpeg="install ffmpeg? (y/n) : "
-if !doInstallFfmpeg!=="y" (
-	goto :checkChocolatey
-	:chocoInstalled
-	choco install ffmpeg
-	RefreshEnv.cmd
-	goto :checkFfmpeg
-)
-if !doInstallFfmpeg!=="n" (
-	goto :errorOcurred
-)
-echo WRONG OPTION!
-goto :installFfmpeg
