@@ -1,4 +1,3 @@
-# clipCompressor
-script for compressing short game clips to fit under 10mb so you can send them on discord
+# batchTricks
 
-just drag and drop your clip onto the batch file
+repo full of unique batch tricks
