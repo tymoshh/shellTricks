@@ -6,3 +6,4 @@ chmod +x ./llvm.sh
 apt update
 apt install llvm-14 llvm-14-dev
 ln -sf $(which llvm-config-14) /usr/local/bin/llvm-config
+ln -sf /usr/bin/llc-14 /usr/bin/llc
