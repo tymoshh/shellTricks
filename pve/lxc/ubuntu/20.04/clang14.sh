@@ -30,6 +30,7 @@ tee "$PROFILE_D_FILE" > /dev/null <<EOF
 #!/bin/sh
 # LLVM and Clang 14 environment variables
 export LLVM_CONFIG=/usr/bin/llvm-config-14
+export LLVM_SYS_140_PREFIX=/usr/lib/llvm-14
 export CLANG=/usr/bin/clang-14
 export CLANGXX=/usr/bin/clang++-14
 
