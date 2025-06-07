@@ -1,5 +1,8 @@
 #!/bin/bash
 
+apt update
+apt install curl
+
 set -e
 
 RUSTUP_INIT_URL="https://sh.rustup.rs"
