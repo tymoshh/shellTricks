@@ -22,7 +22,6 @@ export PATH=/opt/rust/cargo/bin:\$PATH
 EOF
 
 chmod +x "$RUST_ENV_FILE"
-echo "[*] Created $RUST_ENV_FILE"
 
 # 3. Add to /etc/environment for non-interactive shells
 if ! grep -q "/opt/rust/cargo/bin" /etc/environment; then
