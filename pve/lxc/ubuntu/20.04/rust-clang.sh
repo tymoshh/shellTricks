@@ -25,3 +25,19 @@ ln -sf /usr/bin/llvm-size-14 /usr/bin/llvm-size
 ln -sf /usr/bin/llvm-strip-14 /usr/bin/llvm-strip
 ln -sf /usr/lib/llvm-14/lib/libLLVM-14.so /usr/lib/libLLVM.so
 apt upgrade
+PROFILE_D_FILE="/etc/profile.d/clang14.sh"
+tee "$PROFILE_D_FILE" > /dev/null <<EOF
+#!/bin/sh
+# LLVM and Clang 14 environment variables
+export LLVM_CONFIG=/usr/bin/llvm-config-14
+export CLANG=/usr/bin/clang-14
+export CLANGXX=/usr/bin/clang++-14
+
+export PATH=\$PATH:/usr/lib/llvm-14/bin
+export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}:/usr/lib/llvm-14/lib
+export LIBRARY_PATH=\${LIBRARY_PATH}:/usr/lib/llvm-14/lib
+export C_INCLUDE_PATH=\${C_INCLUDE_PATH}:/usr/lib/llvm-14/include
+export CPLUS_INCLUDE_PATH=\${CPLUS_INCLUDE_PATH}:/usr/lib/llvm-14/include
+EOF
+
+sudo chmod +x "$PROFILE_D_FILE"
