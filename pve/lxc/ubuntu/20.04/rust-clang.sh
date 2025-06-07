@@ -23,4 +23,5 @@ ln -sf /usr/bin/llvm-ranlib-14 /usr/bin/llvm-ranlib
 ln -sf /usr/bin/llvm-readobj-14 /usr/bin/llvm-readobj
 ln -sf /usr/bin/llvm-size-14 /usr/bin/llvm-size
 ln -sf /usr/bin/llvm-strip-14 /usr/bin/llvm-strip
+ln -sf /usr/lib/llvm-14/lib/libLLVM-14.so /usr/lib/libLLVM.so
 apt upgrade
